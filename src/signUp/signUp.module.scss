@@ -1,0 +1,94 @@
+@import 'src/Scss/mixins';
+@import 'src/Scss/variables';
+
+.mainBlock {
+	max-width: 665px;
+	min-height: 480px;
+
+	display: flex;
+	justify-content: center;
+	margin: auto;
+
+	border: 1px solid rgba(0, 0, 0, 0.2);
+
+	background-color: white;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 38.5px 22px 32.5px 21px  ;
+	max-width: 528px;
+	box-sizing: border-box;
+
+	position: relative;
+
+	.spanBlock {
+		min-width: 100px;
+		margin-top: -21px;
+		z-index: 1;
+
+		@media (max-width: 427px) {
+			width: 120px;
+			& span {
+				@include text(12px, 300, 'Work Sans', 16px);
+			}
+		}
+	}
+
+	& img {
+		bottom: 0;
+		right: 0;
+		position: absolute;
+		z-index: 0;
+	}
+
+	.subtitle {
+		box-sizing: border-box;
+		padding-bottom: 20px;
+
+		@include text(14px, 300, 'Work Sans', 16px);
+
+		color: #111111;
+
+		& a {
+			@include text(14px, 400, 'Work Sans', 16px);
+			text-decoration: underline;
+
+			color: $secondaryColor;
+		}
+	}
+}
+
+.appBar {
+	display: flex;
+	justify-content: flex-end;
+	align-items: flex-end;
+
+	width: 137px;
+
+	background-color: $secondaryColor;
+
+	z-index: 1;
+
+	@media (max-width: 600px) {
+		width: 20%;
+	}
+
+	& div{
+		padding-top: 21.98px;
+		padding-left: 5.7px;
+
+		letter-spacing: 0.5px;
+		@include text(49px, 400, 'PT Sans', 63.41px);
+
+		writing-mode: vertical-lr;
+		transform: rotate(-180deg);
+
+		color: white;
+	}
+}
+
+
+
