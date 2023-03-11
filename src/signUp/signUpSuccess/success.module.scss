@@ -1,0 +1,28 @@
+@import 'src/Scss/mixins';
+
+.titleContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 53px;
+
+	margin-top: auto;
+	margin-bottom: auto;
+
+	margin-left: 43px;
+}
+
+.title {
+	@include text(22px, 400, 'Work Sans', 26px);
+	letter-spacing: -0.46px;
+
+	color: #111111;
+}
+
+.subtitle {
+	box-sizing: border-box;
+
+	@include text(14px, 300, 'Work Sans', 16px);
+
+	color: #111111;
+}
