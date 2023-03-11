@@ -1,0 +1,48 @@
+@import 'src/Scss/mixins';
+@import 'src/Scss/variables';
+
+.textField {
+	width: 100%;
+	height: 42px;
+
+	& div {
+		margin-bottom: 6px;
+		height: 26px;
+	}
+
+	& label {
+		@include text(16px, 300, 'Work Sans', 14px);
+
+		color: $labelColor;
+	}
+
+	& input {
+		@include text(16px, 400, 'Work Sans', 16px);
+	}
+
+	& div:before, div:after, div:hover:before {
+
+		border-bottom: 1px solid #F2F2F2;
+	}
+}
+.errorTextField {
+	width: 100%;
+	height: 42px;
+
+	& label {
+		@include text(16px, 300, 'Work Sans', 14px);
+
+		color: #7C7C7C;
+	}
+
+	& input {
+		padding: 0;
+
+		@include text(16px, 400, 'Work Sans', 16px);
+		color: red;
+	}
+
+	& div:before, div:after, div:hover:before {
+		border-bottom: 1px solid #F2F2F2;
+	}
+}
