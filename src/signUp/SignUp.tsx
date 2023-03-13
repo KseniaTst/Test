@@ -13,8 +13,6 @@ export const SignUp = () => {
 			</div>
 			<div className={style.container}>
 				{registered? <SignUpSuccess/>: <SignUpForm setRegistered={setRegistered}/>}
-				{/*<div className={style.spanBlock}>*/}
-				{/*</div>*/}
 			</div>
 		</div>
 	);
