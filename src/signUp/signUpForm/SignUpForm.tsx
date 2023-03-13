@@ -70,7 +70,10 @@ export const SignUpForm = (props:PropsType) => {
 		},
 		onSubmit: values => {
 			formik.resetForm();
-			setRegistered(true)
+			fetch(' http://localhost:3001/response')
+				.then((res)=> {
+					if (res.status===200) setRegistered(true)
+				})
 		},
 	});
 	return (
