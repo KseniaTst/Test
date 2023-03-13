@@ -7,17 +7,17 @@ import {
 } from "@mui/material";
 import style from "./signUpForm.module.scss";
 import {useFormik} from "formik";
-import {DropBox} from "../../components/DropBox";
 import classNames from "classnames";
 import icon from "../../assets/icons/Shape.svg";
+import {DropBox} from "../../components/DropBox";
 
 type FormikErrorType = {
 	firstName?: string
 	lastName?: string
 	Nationality?: string
-	day?: number
-	month?: number
-	year?: number
+	day?: string
+	month?: string
+	year?: string
 	email?: string
 	gender?: string
 	password?: string
@@ -36,10 +36,10 @@ export const SignUpForm = (props:PropsType) => {
 		initialValues: {
 			firstName: '',
 			lastName: '',
-			Nationality: '',
-			day: 0,
-			month: 0,
-			year: 0,
+			nationality: '',
+			day: '',
+			month: '',
+			year: '',
 			email: '',
 			gender: '',
 			password: '',
@@ -81,6 +81,7 @@ export const SignUpForm = (props:PropsType) => {
 			<form onSubmit={formik.handleSubmit}>
 				<FormGroup>
 					<div className={style.formContainer}>
+
 						<div className={style.formBlock}>
 							<TextField
 								className={style.textField}
@@ -92,19 +93,24 @@ export const SignUpForm = (props:PropsType) => {
 								margin='normal'
 								{...formik.getFieldProps('firstName')}
 							/>
-							<DropBox formik={formik} label={'Nationality'} field={'nationality'}/>
+							<div className={style.dropBoxContainer}>
+								<div className={style.label}>Nationality</div>
+								<DropBox options={nations}/>
+							</div>
+
 							<div className={style.dropBoxContainer}>
 								<div className={style.label}>Date of Birth</div>
 								<div style={{width: '56px'}}>
-									<DropBox formik={formik} label={''} field={'day'}/>
+									<DropBox options={days}/>
 								</div>
 								<div style={{width: '91px'}}>
-									<DropBox formik={formik} label={''} field={'month'}/>
+									<DropBox options={months} />
 								</div>
 								<div style={{width: '67.6px'}}>
-									<DropBox formik={formik} label={''} field={'year'}/>
+									<DropBox  options={years}/>
 								</div>
 							</div>
+
 							<TextField
 								className={style.textField}
 								variant='standard'
@@ -120,6 +126,7 @@ export const SignUpForm = (props:PropsType) => {
 								{formik.touched.password && formik.errors.password ? formik.errors.password : null}
 							</div>
 						</div>
+
 						<div className={style.formBlock}>
 							<TextField
 								className={style.textField}
@@ -131,6 +138,7 @@ export const SignUpForm = (props:PropsType) => {
 								margin='normal'
 								{...formik.getFieldProps('lastName')}
 							/>
+
 							<TextField
 								className={classNames(style.textField, {
 									[style.errorTextField]: formik.errors.email
@@ -146,11 +154,18 @@ export const SignUpForm = (props:PropsType) => {
 							<div className={style.error}>
 								{formik.touched.email && formik.errors.email ? formik.errors.email : null}
 							</div>
+
 							<RadioGroup className={style.radioContainer}>
 								<div className={style.label}>Gender</div>
-								<FormControlLabel value="female" control={<Radio size={'small'}/>} label="Male"/>
-								<FormControlLabel value="male" control={<Radio size={'small'}/>} label="Female"/>
+								<FormControlLabel
+									{...formik.getFieldProps('gender')}
+									value={'male'}
+									control={<Radio size={'small'}/>} label="Male"/>
+								<FormControlLabel
+									{...formik.getFieldProps('gender')}
+									value="female" control={<Radio  size={'small'}/>} label="Female"/>
 							</RadioGroup>
+
 							<TextField
 								className={style.textField}
 								variant='standard'
@@ -165,6 +180,7 @@ export const SignUpForm = (props:PropsType) => {
 							<div className={style.error}>
 								{formik.touched.confirmPassword && formik.errors.confirmPassword ? formik.errors.confirmPassword : null}
 							</div>
+
 						</div>
 						<div className={style.buttonBlock}>
 							<span className={style.subtitle}>Have an account? <a>Login</a></span>
@@ -178,3 +194,8 @@ export const SignUpForm = (props:PropsType) => {
 		</div>
 	)
 }
+
+const years = ['2020','2021','2022','2023']
+const months = ['January', 'February','March', 'April', 'May']
+const nations = ['German']
+const days = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15']

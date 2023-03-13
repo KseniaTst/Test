@@ -1,35 +1,37 @@
-import {Autocomplete, InputAdornment, TextField} from "@mui/material";
-import style from './dropBox.module.scss'
+import {useState} from "react";
+import styles from './dropbox.module.scss'
 
 type PropsType = {
-	formik: any
-	label : string
-	field:string
+	options: Array<string>
 }
 
-export const DropBox = (props:PropsType) => {
-	const {formik, label, field} = props
+export const DropBox = (props: PropsType) => {
+
+	const {options} = props
+
+	const [option, setOption] = useState('')
+	const [show, setShow] = useState(false)
+
+	const onOptionClick = (op: string) => {
+		setShow(false)
+		setOption(op)
+	}
 
 	return (
-		<Autocomplete
-			renderInput={(p)=>(<TextField
-					{...p}
-					className={style.textField}
-					variant="standard"
-					label={label}
-					InputLabelProps={{
-						shrink: true,
-					}}
-					InputProps={{
-						endAdornment: (
-							<InputAdornment position="end">
-								<i className={style.arrowDown}/>
-							</InputAdornment>
-						),
-					}}
-					margin="normal"
-					{...formik.getFieldProps(field)}
-				/>
-			)} options={[]}/>
+		<div className={styles.accordionContainer}>
+			<div className={styles.inputContainer} onClick={() => setShow(!show)}>
+				<input readOnly value={option}/>
+				<i/>
+			</div>
+
+			{show && <div className={styles.optionsContainer}>
+				{options.map((op, i) => {
+					return <span key={i} onClick={() => onOptionClick(op)}>{op}</span>
+				})
+				}
+			</div>}
+
+		</div>
+
 	)
 }
