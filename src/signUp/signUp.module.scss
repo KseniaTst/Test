@@ -2,8 +2,11 @@
 @import 'src/Scss/variables';
 
 .mainBlock {
+	width: 100%;
 	max-width: 665px;
 	min-height: 480px;
+
+	overflow: hidden;
 
 	display: flex;
 	justify-content: center;
@@ -76,6 +79,9 @@
 
 	@media (max-width: 600px) {
 		width: 20%;
+	}
+	@media (max-width: 670px) {
+		width: 30%;
 	}
 
 	& div {

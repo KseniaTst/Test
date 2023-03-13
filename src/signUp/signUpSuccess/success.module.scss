@@ -5,12 +5,17 @@
 	flex-direction: column;
 	justify-content: space-between;
 	width: 480px;
+	min-width: 200px;
 
 	height: 53px;
 
 	margin-top: auto;
 	margin-bottom: auto;
 	margin-left: 43px;
+
+	@media (max-width: 670px) {
+		width: 100%;
+	}
 }
 
 .title {
